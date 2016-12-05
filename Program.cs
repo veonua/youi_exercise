@@ -2,8 +2,10 @@ using Microsoft.VisualBasic.FileIO;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
 
+[assembly: InternalsVisibleTo("youiTestTests")]
 namespace youiTest
 {
     public class Program
@@ -39,7 +41,8 @@ namespace youiTest
                     from y in names
                     select y.last).
                     GroupBy(x => x)
-                    .Select(group => new { name = group.Key, count = group.Count() });
+                    .Select(group => new { name = group.Key, count = group.Count() })
+                    .OrderByDescending(x=> x.count);
         }
 
         /// <summary>
