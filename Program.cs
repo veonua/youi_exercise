@@ -42,7 +42,7 @@ namespace youiTest
                     select y.last).
                     GroupBy(x => x)
                     .Select(group => new { name = group.Key, count = group.Count() })
-                    .OrderByDescending(x=> x.count);
+                    .OrderByDescending(x=> x.count).ThenBy(x=>x.name);
         }
 
         /// <summary>
